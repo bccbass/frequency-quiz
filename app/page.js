@@ -1,12 +1,10 @@
-import PracticePanel from './components/PracticePanel';
+import Practice from "./components/Practice";
 
 export default function Home() {
   return (
-    <div>
-      <h1 className="text-3xl uppercase">What's the frequency, Benneth?</h1>
-      <div className="w-screen outline h-[80vh] my-16 flex flex-col items-center ">
-      <PracticePanel />
-    </div>
+    <div className="w-screen flex flex-col items-center h-fit">
+      <h1 className="text-3xl uppercase m-4 text-center">What's the frequency, Benneth?</h1>
+      <Practice />
     </div>
   );
 }
