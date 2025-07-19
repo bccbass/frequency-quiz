@@ -6,13 +6,12 @@ import PlayCircleIcon from "@mui/icons-material/PlayCircle";
 import StopCircleIcon from "@mui/icons-material/StopCircle";
 import * as Tone from "tone";
 
-const ButtonPlay = () => {
+const ButtonPlay = ({frequency}) => {
 	const [isPlaying, setIsPlaying] = useState(false);
 	const oscillatorRef = useRef(null);
 
 	useEffect(() => {
-		const osc = new Tone.Oscillator(440, "sine").toDestination();
-
+		const osc = new Tone.Oscillator(frequency, "sine").toDestination();
 		oscillatorRef.current = osc;
 
 		return () => {
@@ -59,6 +58,7 @@ const ButtonPlay = () => {
 			) : (
 				<PlayCircleIcon fontSize={"inherit"} />
 			)}
+			{frequency} Hz
 		</button>
 	);
 };
