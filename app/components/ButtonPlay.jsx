@@ -11,7 +11,6 @@ const ButtonPlay = () => {
 	const oscillatorRef = useRef(null);
 
 	useEffect(() => {
-		// Create oscillator and envelope once
 		const osc = new Tone.Oscillator(440, "sine").toDestination();
 
 		oscillatorRef.current = osc;
@@ -25,23 +24,23 @@ const ButtonPlay = () => {
 	useEffect(() => {
 		if (oscillatorRef.current) {
 			if (isPlaying) {
-				// oscillatorRef.current.start(1);
-				Tone.start();
-				oscillatorRef.current.volume.value = - Infinity // Start with volume at -Infinity
+				const startToneContext = async () => {
+					if (Tone.getContext() !== "running") {
+						console.log("Starting Tone context");
+						await Tone.start();
+					}
+				};
+				startToneContext();
+				oscillatorRef.current.volume.value = -Infinity; // Start with volume at -Infinity
 				// oscillatorRef.current.start();
 
-
 				oscillatorRef.current.volume.rampTo(-12, 0.15); // Fade in over 100ms
-
 			} else {
 				oscillatorRef.current.volume.rampTo(-Infinity, 0.5); // Fade out over 300ms
 				// oscillatorRef.current.stop(4); // Stop after 1 second
-
 			}
 		}
 	}, [isPlaying]);
-
-	// ... rest of component
 
 	const handleClick = () => {
 		setIsPlaying(!isPlaying);
