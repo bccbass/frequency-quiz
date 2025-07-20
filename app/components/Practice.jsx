@@ -1,5 +1,5 @@
 import React from "react";
-import FreqController from "./FreqController";
+import FreqController from "./FrequencyPractice";
 
 const Practice = () => {
   return (

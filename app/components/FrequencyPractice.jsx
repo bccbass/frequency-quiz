@@ -5,7 +5,14 @@ import React, { useState } from "react";
 import FrequencyDisplay from "./FrequencyDisplay";
 import OscillatorButton from "./OscillatorButton";
 
-const FreqController = ({ frequencies = [] }) => {
+const frequencies = [
+	100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 2000, 3000, 4000, 8000,
+	12000,
+];
+
+const FrequencyPractice
+ = ({ }) => {
+
 	const [isPlaying, setIsPlaying] = useState(false);
 	const [frequency, setFrequency] = useState(frequencies[0]); // Default frequency
 	const handleFrequencyChange = (value) => {
@@ -33,4 +40,5 @@ const FreqController = ({ frequencies = [] }) => {
 	);
 };
 
-export default FreqController;
+export default FrequencyPractice
+;

@@ -2,14 +2,16 @@
 
 "use client";
 import React, { useState } from "react";
-import Practice from "./Practice";
+import FrequencyPractice from "./FrequencyPractice";
+import FrequencyPlay from "./FrequencyPlay";
+
 import { FaWaveSquare } from "react-icons/fa";
 
 const toggleStyles = "px-2 uppercase py-2 w-1/2 inline-block text-center";
 
 const inactiveStyles = "hover:bg-sky-700 transition-colors duration-300";
 const activeStyles = "bg-foreground text-background ";
-const FreqGame = () => {
+const FrequenciesSection = () => {
 	const [practiceMode, setPracticeMode] = useState(true);
 	return (
 		<div>
@@ -38,15 +40,11 @@ const FreqGame = () => {
 					</a>
 				</div>
 				<div className="flex flex-col items-center">
-					{practiceMode ? (
-						<Practice />
-					) : (
-						<p className="text-xl">Play Mode Selected</p>
-					)}
+					{practiceMode ? <FrequencyPractice /> : <FrequencyPlay />}
 				</div>
 			</div>
 		</div>
 	);
 };
 
-export default FreqGame;
+export default FrequenciesSection;
