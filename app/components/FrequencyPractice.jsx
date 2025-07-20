@@ -26,7 +26,7 @@ const FrequencyPractice
 				<FrequencyDisplay
 					isPlaying={isPlaying}
 					setIsPlaying={setIsPlaying}
-					handleFrequencyChange={handleFrequencyChange}
+					clickHandler={handleFrequencyChange}
 					activeFrequency={frequency}
 					frequencies={frequencies}
 				/>

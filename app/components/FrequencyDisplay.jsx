@@ -14,7 +14,7 @@ const FreqButton = ({ freq, activeFrequency, clickHandler, isPlaying }) => (
 );
 
 const FrequencyDisplay = ({
-	handleFrequencyChange,
+	clickHandler,
 	activeFrequency,
 	frequencies,
 	isPlaying,
@@ -27,7 +27,7 @@ const FrequencyDisplay = ({
 					isPlaying={isPlaying}
 					freq={freq}
 					activeFrequency={activeFrequency}
-					clickHandler={handleFrequencyChange}
+					clickHandler={clickHandler}
 				/>
 			))}
 		</div>
