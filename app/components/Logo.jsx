@@ -8,6 +8,7 @@ const Logo = () => {
 	
 			<Image
 				// URL={"freqquiz_logo_smaller.png"}
+				alt="FREQquiz Logo"
 				src={"/freqquiz_logo_smaller.png"}
 				width={200}
 				height={100}
