@@ -9,16 +9,21 @@ const Game = ({ children }) => {
 
 	return (
 		<div className="flex items-center justify-center w-full">
-			<div></div>
 			{gameState.round <= 10 ? (
-				children
+				<div className="">
+					<p className="text-2xl w-full text-right font-semibold">
+						{" "}
+						Round {gameState.round} | 10{" "}
+					</p>
+					{children}
+				</div>
 			) : (
 				<div className="text-center text-2xl font-bold">
 					<p className="text-accent">Great Job!</p>
 					<p className="text-gray-500">
 						You received {gameState.score} points!
 					</p>
-					<button onClick={resetGame} className="btn btn-primary mt-4">
+					<button onClick={resetGame} className="rounded-sm bg-primary mt-4">
 						Play Again
 					</button>
 				</div>

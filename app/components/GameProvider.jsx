@@ -1,6 +1,5 @@
 /** @format */
-import React, { useContext, useState } from "react";
-import Game from "./Game";
+import React, { useState } from "react";
 
 import { GameContext } from "./GameContext";
 
@@ -14,7 +13,6 @@ const GameProvider = ({ children }) => {
 
 	const markCorrect = () => {
 		const calculatedPoints = 200 - gameState.attempts * 50;
-
 		setGameState({
 			round: gameState.round + 1,
 			attempts: 0,
@@ -34,9 +32,6 @@ const GameProvider = ({ children }) => {
 		setGameState({ ...gameState, attempts: gameState.attempts + 1 });
 	};
 
-	// const setCorrect = (value) => {
-	// 	setGameState({ ...gameState, correct: value });
-	// };
 
 	return (
 		<GameContext
