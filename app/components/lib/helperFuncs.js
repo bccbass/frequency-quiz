@@ -1,10 +1,12 @@
 /** @format */
 
+const getRandomArrIndex = (arr) => arr[Math.floor(Math.random() * arr.length)];
+
 export const getCorrectAnswer = (optionsArr, currentCorrectAns) => {
 	if (currentCorrectAns) {
 		const filtered = optionsArr.filter((freq) => freq !== currentCorrectAns);
-		return filtered[Math.floor(Math.random() * filtered.length)];
-	} else return optionsArr[Math.floor(Math.random() * optionsArr.length)];
+		return getRandomArrIndex(filtered);
+	} else return getRandomArrIndex(optionsArr);
 };
 
 // Utility: Fisher–Yates shuffle

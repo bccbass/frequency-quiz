@@ -3,6 +3,7 @@
 import React from "react";
 import FreqButton from "./FreqButton";
 
+
 const FrequencyDisplay = ({
 	clickHandler,
 	activeFrequency,

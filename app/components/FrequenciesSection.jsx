@@ -5,8 +5,14 @@ import React, { useState } from "react";
 import FrequencyPractice from "./FrequencyPractice";
 import FrequencyQuiz from "./FrequencyQuiz";
 import GameProvider from "./GameProvider";
-import Game from "./Game";
+// import Game from "./Game";
 import { frequencies } from "./lib/gameData";
+import dynamic from "next/dynamic";
+
+const Game = dynamic(() => import("./Game"), {
+	ssr: false,
+	loading: () => <div>Loading...</div>,
+});
 
 
 import { FaWaveSquare } from "react-icons/fa";
@@ -16,7 +22,7 @@ const toggleStyles = "px-2 uppercase py-2 w-1/2 inline-block text-center";
 const inactiveStyles = "hover:bg-sky-700 transition-colors duration-300";
 const activeStyles = "bg-foreground text-background ";
 const FrequenciesSection = () => {
-	const [practiceMode, setPracticeMode] = useState(false);
+	const [practiceMode, setPracticeMode] = useState(true);
 	return (
 		<div>
 			<h1 className="text-4xl md:text-5xl font-bold mb-8 text-accent rounded-sm w-fit mx-auto px-4 py-2 uppercase">

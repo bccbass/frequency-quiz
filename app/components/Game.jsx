@@ -11,19 +11,17 @@ const Game = ({ children }) => {
 		<div className="flex items-center justify-center w-full">
 			{gameState.round <= 10 ? (
 				<div className="">
-					<p className="text-2xl w-full text-right font-semibold">
-						{" "}
-						Round {gameState.round} | 10{" "}
-					</p>
+
 					{children}
 				</div>
 			) : (
 				<div className="text-center text-2xl font-bold">
-					<p className="text-accent">Great Job!</p>
-					<p className="text-gray-500">
-						You received {gameState.score} points!
-					</p>
-					<button onClick={resetGame} className="rounded-sm bg-primary mt-4">
+					<p className="text-accent my-4">Great Job!</p>
+					<p className="my-4">You received {gameState.score} points!</p>
+					<button
+						onClick={resetGame}
+						className="rounded-sm py-4 w-72 bg-pink-700 hover:bg-pink-600 transition outline mt-4"
+					>
 						Play Again
 					</button>
 				</div>
