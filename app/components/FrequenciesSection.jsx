@@ -6,6 +6,8 @@ import FrequencyPractice from "./FrequencyPractice";
 import FrequencyQuiz from "./FrequencyQuiz";
 import GameProvider from "./GameProvider";
 import Game from "./Game";
+import { frequencies } from "./lib/gameData";
+
 
 import { FaWaveSquare } from "react-icons/fa";
 
@@ -47,7 +49,7 @@ const FrequenciesSection = () => {
 					) : (
 						<GameProvider>
 							<Game>
-								<FrequencyQuiz />
+								<FrequencyQuiz frequencies={frequencies} />
 							</Game>
 						</GameProvider>
 					)}

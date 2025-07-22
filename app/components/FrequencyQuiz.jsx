@@ -6,20 +6,20 @@ import FrequencyDisplay from "./FrequencyDisplay";
 import OscillatorButton from "./OscillatorButton";
 import { GameContext } from "./GameContext";
 import { getCorrectAnswer, getOptions } from "./lib/helperFuncs";
-import { frequencies } from "./lib/gameData";
 
-const FrequencyQuiz = () => {
-
+const FrequencyQuiz = ({ frequencies }) => {
 	const { incrementAttempts, markCorrect } = useContext(GameContext);
 	const [isPlaying, setIsPlaying] = useState(false);
 	const frequency = getCorrectAnswer(frequencies);
 	const freqRef = useRef(frequency);
 	const frequencyGameOptions = getOptions(frequencies, freqRef.current);
+	const optionsRef = useRef(frequencyGameOptions);
 
 	const handleUserAnswer = (input, freq) => {
 		if (input == freq) {
 			markCorrect();
 			freqRef.current = getCorrectAnswer(frequencies, freqRef.current);
+			optionsRef.current = getOptions(frequencies, freqRef.current);
 		} else {
 			incrementAttempts();
 		}
@@ -37,7 +37,7 @@ const FrequencyQuiz = () => {
 					setIsPlaying={setIsPlaying}
 					clickHandler={handleUserAnswer}
 					activeFrequency={freqRef.current}
-					frequencies={frequencyGameOptions}
+					frequencies={optionsRef.current}
 				/>
 			</div>
 			<OscillatorButton

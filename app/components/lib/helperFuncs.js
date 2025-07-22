@@ -6,9 +6,6 @@ export const getCorrectAnswer = (optionsArr, currentCorrectAns) => {
 		return filtered[Math.floor(Math.random() * filtered.length)];
 	} else return optionsArr[Math.floor(Math.random() * optionsArr.length)];
 };
-// export const getDistractors = (optionsArr, correctIndex) => {
-// 	const distractors = optionsArr.filter((_, index) => index !== correctIndex);
-// };
 
 // Utility: Fisher–Yates shuffle
 function shuffleArray(arr) {
@@ -20,22 +17,31 @@ function shuffleArray(arr) {
 	return copy;
 }
 
-const getDistractors = (optionsArr, correctIndex) => {
-	const splitIndex = Math.floor(optionsArr.length / 2);
+const getDistractors = (optionsArr, correctAns) => {
+	const correctIndex = optionsArr.indexOf(correctAns);
+
+	const filteredDeck = optionsArr.filter((_, index) => index !== correctIndex);
+
+	const splitIndex = Math.ceil(filteredDeck.length / 3);
+	// Splite the deck into three parts
+	// and return a random part as distractors
 	const splitDeck =
 		correctIndex <= splitIndex
-			? optionsArr.slice(0, splitIndex)
-			: optionsArr.slice(splitIndex);
-	const distractors = shuffleArray(
-		splitDeck.filter((_, index) => index !== correctIndex)
-	);
+			? filteredDeck.slice(0, splitIndex)
+			: correctIndex > splitIndex * 2
+			? filteredDeck.slice(-splitIndex)
+			: filteredDeck.slice(splitIndex, splitIndex * 2);
+
+	const distractors = shuffleArray(splitDeck);
+
+	if (distractors.length > 3) {
+		return distractors.slice(0, 3);
+	}
 	return distractors;
 };
 
 export const getOptions = (optionsArr, correctAns) => {
-    const correctIndex = optionsArr.indexOf(correctAns);
-	const correctAnswer = optionsArr[correctIndex];
-	const distractors = getDistractors(optionsArr, correctIndex);
-	const options = [correctAnswer, ...distractors];
+	const distractors = getDistractors(optionsArr, correctAns);
+	const options = [correctAns, ...distractors];
 	return shuffleArray(options);
 };
