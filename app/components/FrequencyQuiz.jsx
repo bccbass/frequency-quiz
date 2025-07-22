@@ -9,7 +9,7 @@ import { getCorrectAnswer, getOptions } from "./lib/helperFuncs";
 
 const FrequencyQuiz = ({ frequencies }) => {
 	const { incrementAttempts, markCorrect } = useContext(GameContext);
-	const [isPlaying, setIsPlaying] = useState(false);
+	const [isPlaying, setIsPlaying] = useState(false); 
 	const frequency = getCorrectAnswer(frequencies);
 	const freqRef = useRef(frequency);
 	const frequencyGameOptions = getOptions(frequencies, freqRef.current);
