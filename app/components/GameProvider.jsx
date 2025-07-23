@@ -1,7 +1,7 @@
 /** @format */
 import React, { useState } from "react";
 
-import { GameContext } from "./GameContext";
+import { GameContext } from "../context/GameContext";
 
 const GameProvider = ({ children }) => {
 	const [gameState, setGameState] = useState({
@@ -31,7 +31,6 @@ const GameProvider = ({ children }) => {
 	const incrementAttempts = () => {
 		setGameState({ ...gameState, attempts: gameState.attempts + 1 });
 	};
-
 
 	return (
 		<GameContext

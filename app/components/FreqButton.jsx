@@ -1,15 +1,10 @@
 /** @format */
 "use client";
-
 import React from "react";
 
-const FreqButton = ({
-	freq,
-	activeFrequency,
-	clickHandler,
-	isPlaying,
-	quizMode = false,
-}) => {
+const FreqButton = ({ freq, clickHandler, activeFrequency, isPlaying, quizMode = false }) => {
+
+
 	return (
 		<button
 			disabled={!isPlaying}

@@ -4,12 +4,13 @@
 import React, { useState, useRef, useContext } from "react";
 import FrequencyDisplay from "./FrequencyDisplay";
 import OscillatorButton from "./OscillatorButton";
-import { GameContext } from "./GameContext";
+import { GameContext } from "../context/GameContext";
 import RoundCounter from "./RoundCounter";
-import { getCorrectAnswer, getOptions } from "./lib/helperFuncs";
+import { getCorrectAnswer, getOptions } from "../lib/helperFuncs";
+import { frequencies } from "../lib/gameData";
 
-const FrequencyQuiz = ({ frequencies }) => {
-	const { gameState, incrementAttempts, markCorrect } = useContext(GameContext);
+const FrequencyQuiz = () => {
+	const { gameState, markCorrect, incrementAttempts } = useContext(GameContext);
 	const [isPlaying, setIsPlaying] = useState(false);
 	const [isGameStarted, setIsGameStarted] = useState(false);
 	const frequency = getCorrectAnswer(frequencies);
@@ -17,15 +18,15 @@ const FrequencyQuiz = ({ frequencies }) => {
 	const frequencyGameOptions = getOptions(frequencies, freqRef.current);
 	const optionsRef = useRef(frequencyGameOptions);
 
-	const handleUserAnswer = (input, freq) => {
-		if (input == freq) {
-			markCorrect();
-			freqRef.current = getCorrectAnswer(frequencies, freqRef.current);
-			optionsRef.current = getOptions(frequencies, freqRef.current);
-		} else {
-			incrementAttempts();
-		}
-	};
+		const handleAnswerClick = (input, freq) => {
+			if (input == freq) {
+				markCorrect();
+				freqRef.current = getCorrectAnswer(frequencies, freqRef.current);
+				optionsRef.current = getOptions(frequencies, freqRef.current);
+			} else {
+				incrementAttempts();
+			}
+		};
 
 	return !isGameStarted ? (
 		<button
@@ -40,7 +41,7 @@ const FrequencyQuiz = ({ frequencies }) => {
 	) : (
 		<div
 			id="game"
-			className="flex flex-col h-[60vh] md:h-[80vh] items-center overflow-hidden py-2"
+			className="flex flex-col h-[60vh] md:h-[80vh] items-center overflow-hidden py-2 w-md"
 		>
 			<RoundCounter round={gameState.round} />
 			<div className="h-fit overflow-scroll">
@@ -48,7 +49,7 @@ const FrequencyQuiz = ({ frequencies }) => {
 					quizMode={true}
 					isPlaying={isPlaying}
 					setIsPlaying={setIsPlaying}
-					clickHandler={handleUserAnswer}
+					clickHandler={handleAnswerClick}
 					activeFrequency={freqRef.current}
 					frequencies={optionsRef.current}
 				/>

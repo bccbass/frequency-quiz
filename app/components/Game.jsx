@@ -2,7 +2,7 @@
 
 "use client";
 import React, { useContext } from "react";
-import { GameContext } from "./GameContext";
+import { GameContext } from "../context/GameContext";
 
 const Game = ({ children }) => {
 	const { gameState, resetGame } = useContext(GameContext);
@@ -10,10 +10,7 @@ const Game = ({ children }) => {
 	return (
 		<div className="flex items-center justify-center w-full">
 			{gameState.round <= 10 ? (
-				<div className="">
-
-					{children}
-				</div>
+				<div className="">{children}</div>
 			) : (
 				<div className="text-center text-2xl font-bold">
 					<p className="text-accent my-4">Great Job!</p>
