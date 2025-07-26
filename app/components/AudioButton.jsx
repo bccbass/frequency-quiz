@@ -10,7 +10,7 @@ const FrequencyFilterButton = ({
 	frequency,
 	isPlaying,
 	setIsPlaying,
-	audioURL = "./bass.mp3",
+	audioURL = "./electric_bass.mp3",
 }) => {
 	const playerRef = useRef(null);
 	const filterRef = useRef(null);
@@ -126,11 +126,11 @@ const FrequencyFilterButton = ({
 		if (playerRef.current && filterRef.current) {
 			// Update filter gain if isEqEngaged changes
 			if (isEqEngaged) {
-				filterRef.current.frequency.rampTo(frequency, .02);
+				filterRef.current.frequency.rampTo(frequency, 0.02);
 				console.log(`Filter frequency set to ${frequency}Hz`);
 			} else {
 				// If EQ is disengaged, set gain to a neutral value
-				filterRef.current.frequency.rampTo(10, 0.02);; // Mute the filter
+				filterRef.current.frequency.rampTo(10, 0.02); // Mute the filter
 				console.log("EQ disengaged, filter frequency set to 1000Hz");
 			}
 		}
