@@ -34,7 +34,7 @@ const FreqButton = ({
 			onMouseDown={() => {
 				checkAnswer(freq, activeFrequency), clickHandler(freq, activeFrequency);
 			}}
-			className={`text-2xl w-72 md:w-md  text-white px-4 py-2 rounded  transition ${
+			className={`text-2xl w-72 md:w-md cursor-pointer text-center  text-white px-4 py-2 rounded  transition ${
 				!quizMode && activeFrequency === freq
 					? "bg-pink-600 font-bold outline"
 					: "bg-pink-700"
