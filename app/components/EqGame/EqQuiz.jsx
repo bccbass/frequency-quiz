@@ -38,7 +38,11 @@ const EqQuiz = () => {
 	};
 
 	return !isGameStarted ? (
-		<AudioFilesList audioFiles={audioFiles} />
+		<AudioFilesList
+			audioFiles={audioFiles}
+			setAudioURL={setAudioURL}
+			setIsGameStarted={setIsGameStarted}
+		/>
 	) : (
 		<div
 			id="game"
