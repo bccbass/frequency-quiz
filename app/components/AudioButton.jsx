@@ -5,8 +5,8 @@ import { FaRegPlayCircle } from "react-icons/fa";
 import { FaRegCircleStop } from "react-icons/fa6";
 import * as Tone from "tone";
 
-const FrequencyFilterButton = ({
-	isEqEngaged,
+const AudioButton = ({
+	isEqEngaged=true,
 	frequency,
 	isPlaying,
 	setIsPlaying,
@@ -161,4 +161,4 @@ const FrequencyFilterButton = ({
 	);
 };
 
-export default FrequencyFilterButton;
+export default AudioButton;

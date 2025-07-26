@@ -9,6 +9,8 @@ import RoundCounter from "../RoundCounter";
 import { getCorrectAnswer, getOptions } from "../../lib/helperFuncs";
 import { frequencies } from "../../lib/gameData";
 import { audioFiles } from "../../lib/gameData";
+import EngageEqButton from "../EngageEqButton";
+import AudioFilesList from "../AudioFilesList";
 
 const EqQuiz = () => {
 	const { gameState, markCorrect, incrementAttempts } = useContext(GameContext);
@@ -36,27 +38,19 @@ const EqQuiz = () => {
 	};
 
 	return !isGameStarted ? (
-		<div className="flex flex-col items-center gap-2 my-10">
-			{audioFiles.map((audioFile, index) => (
-				<button
-					key={index}
-					onClick={() => {
-						setIsGameStarted(true);
-						setAudioURL(audioFile.url);
-						// setIsPlaying(true);
-					}}
-					className=" text-neutral-200 my-2   text-xl font-semibold hover:border-neutral-50 border-b-3 border-background transition hover:text-neutral-50  uppercase"
-				>
-					{audioFile.title}
-				</button>
-			))}
-		</div>
+		<AudioFilesList audioFiles={audioFiles} />
 	) : (
 		<div
 			id="game"
-			className="flex flex-col h-[60vh] md:h-[80vh] items-center overflow-hidden py-2 w-md"
+			className="flex flex-col h-[60vh] md:h-[80vh] items-center overflow-hidden w-md"
 		>
-			<RoundCounter round={gameState.round} />
+			<div className="flex justify-between w-full items-center my-2">
+				<EngageEqButton
+					isEqEngaged={isEqEngaged}
+					setIsEqEngaged={handleIsEqEngaged}
+				/>
+				<RoundCounter round={gameState.round} />
+			</div>
 			<div className="h-fit overflow-scroll">
 				<FrequencyDisplay
 					quizMode={true}
@@ -74,6 +68,12 @@ const EqQuiz = () => {
 				setIsPlaying={setIsPlaying}
 				frequency={freqRef.current}
 			/>
+			<button
+				onMouseDown={() => setIsGameStarted(false)}
+				className="text-neutral-200 hover:underline transition duration-300 hover:underline-offset-8 text-xl"
+			>
+				Exit
+			</button>
 		</div>
 	);
 };

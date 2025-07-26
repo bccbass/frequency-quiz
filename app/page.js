@@ -1,5 +1,4 @@
 /** @format */
-
 import FreqSection from "./components/FrequencyGame/FrequenciesSection";
 import EqSection from "./components/EqGame/EqSection";
 import Logo from "./components/Logo";
