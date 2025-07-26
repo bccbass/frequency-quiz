@@ -61,8 +61,8 @@ const OscillatorButton = ({ frequency, isPlaying, setIsPlaying }) => {
 		<button
 			onClick={handleClick}
 			className={`text-6xl ${
-				isPlaying ? "text-red-400 " : "text-red-400 "
-			} transition ease-in-out m-8`}
+				isPlaying ? "text-red-400" : "text-gray-400"
+			} transition ease-in-out m-8 hover:text-red-500`}
 		>
 			{isPlaying ? (
 				<FaRegCircleStop fontSize={"inherit"} className="" />

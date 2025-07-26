@@ -2,12 +2,12 @@
 
 "use client";
 import React, { useState, useRef, useContext } from "react";
-import FrequencyDisplay from "./FrequencyDisplay";
-import OscillatorButton from "./OscillatorButton";
-import { GameContext } from "../context/GameContext";
-import RoundCounter from "./RoundCounter";
-import { getCorrectAnswer, getOptions } from "../lib/helperFuncs";
-import { frequencies } from "../lib/gameData";
+import FrequencyDisplay from "../FrequencyDisplay";
+import OscillatorButton from "../OscillatorButton";
+import { GameContext } from "../../context/GameContext";
+import RoundCounter from "../RoundCounter";
+import { getCorrectAnswer, getOptions } from "../../lib/helperFuncs";
+import { frequencies } from "../../lib/gameData";
 
 const FrequencyQuiz = () => {
 	const { gameState, markCorrect, incrementAttempts } = useContext(GameContext);
@@ -18,15 +18,15 @@ const FrequencyQuiz = () => {
 	const frequencyGameOptions = getOptions(frequencies, freqRef.current);
 	const optionsRef = useRef(frequencyGameOptions);
 
-		const handleAnswerClick = (input, freq) => {
-			if (input == freq) {
-				markCorrect();
-				freqRef.current = getCorrectAnswer(frequencies, freqRef.current);
-				optionsRef.current = getOptions(frequencies, freqRef.current);
-			} else {
-				incrementAttempts();
-			}
-		};
+	const handleAnswerClick = (input, freq) => {
+		if (input == freq) {
+			markCorrect();
+			freqRef.current = getCorrectAnswer(frequencies, freqRef.current);
+			optionsRef.current = getOptions(frequencies, freqRef.current);
+		} else {
+			incrementAttempts();
+		}
+	};
 
 	return !isGameStarted ? (
 		<button

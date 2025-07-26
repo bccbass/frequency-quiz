@@ -4,10 +4,9 @@
 import React, { useState } from "react";
 import FrequencyPractice from "./FrequencyPractice";
 import FrequencyQuiz from "./FrequencyQuiz";
-import GameProvider from "./GameProvider";
-// import Game from "./Game";
+import GameProvider from "../GameProvider";
 import dynamic from "next/dynamic";
-const Game = dynamic(() => import("./Game"), {
+const Game = dynamic(() => import("../Game"), {
 	ssr: false,
 	loading: () => <div>Loading...</div>,
 });
@@ -22,7 +21,7 @@ const FrequenciesSection = () => {
 	const [practiceMode, setPracticeMode] = useState(true);
 	return (
 		<div>
-			<h1 className="text-4xl md:text-5xl font-bold mb-4 text-accent rounded-sm w-fit mx-auto px-4 mt-2 uppercase">
+			<h1 className="text-4xl md:text-5xl font-bold mb-8 text-accent rounded-sm w-fit mx-auto px-4 py-2 uppercase">
 				Frequency <FaWaveSquare className="inline pb-2" />
 			</h1>
 			<div className="">
@@ -52,7 +51,7 @@ const FrequenciesSection = () => {
 					) : (
 						<GameProvider>
 							<Game>
-								<FrequencyQuiz/>
+								<FrequencyQuiz />
 							</Game>
 						</GameProvider>
 					)}
