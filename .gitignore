@@ -39,7 +39,3 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-
-/public/bass.mp3
-/public/drums.mp3
-/public/acoustic_guitar.mp3
