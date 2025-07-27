@@ -2,23 +2,21 @@
 
 "use client";
 import React, { useState } from "react";
-import FrequencyDisplay from "../FrequencyDisplay";
-import AudioButton from "../AudioFreqButton";
+import GainDisplay from "../GainDisplay";
+import AudioButton from "../AudioGainButton";
 import { audioFiles } from "../../lib/gameData";
 import EngageEqButton from "../EngageFXButton";
 import AudioFilesList from "../AudioFilesList";
-import { frequencies } from "../../lib/gameData";
+import { gainOptions } from "../../lib/gameData";
 
-const EqPractice = ({}) => {
-	const defaultFreq = frequencies[0]; // Default frequency
+const GainPractice = ({}) => {
 	const [isGameStarted, setIsGameStarted] = useState(false);
 	const [audioURL, setAudioURL] = useState(null);
-	const [isEqEngaged, setIsEqEngaged] = useState(true);
-
+	const [isGainEngaged, setIsGainEngaged] = useState(true);
 	const [isPlaying, setIsPlaying] = useState(false);
-	const [frequency, setFrequency] = useState(defaultFreq); // Default frequency
-	const handleFrequencyChange = (value) => {
-		setFrequency(value);
+	const [gain, setGain] = useState(0); // Default gain
+	const handleGainChange = (value) => {
+		setGain(value);
 	};
 
 	return !isGameStarted ? (
@@ -33,24 +31,24 @@ const EqPractice = ({}) => {
 			className="flex flex-col h-[60vh] md:h-[80vh] items-center overflow-hidden py-2"
 		>
 			<EngageEqButton
-				isEqEngaged={isEqEngaged}
-				setIsEqEngaged={setIsEqEngaged}
+				isFXEngaged={isGainEngaged}
+				setIsFXEngaged={setIsGainEngaged}
 			/>
 			<div className="h-fit overflow-scroll mt-4">
-				<FrequencyDisplay
+				<GainDisplay
 					isPlaying={isPlaying}
 					setIsPlaying={setIsPlaying}
-					clickHandler={handleFrequencyChange}
-					activeFrequency={frequency}
-					frequencies={frequencies}
+					clickHandler={handleGainChange}
+					activeGainVal={gain}
+					gainOptions={gainOptions}
 				/>
 			</div>
 			<AudioButton
-				isEqEngaged={isEqEngaged}
+				isGainEngaged={isGainEngaged}
 				audioURL={audioURL}
 				isPlaying={isPlaying}
 				setIsPlaying={setIsPlaying}
-				frequency={frequency}
+				gainValue={gain}
 			/>
 			<button
 				onMouseDown={() => setIsGameStarted(false)}
@@ -62,4 +60,4 @@ const EqPractice = ({}) => {
 	);
 };
 
-export default EqPractice;
+export default GainPractice;

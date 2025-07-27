@@ -2,8 +2,8 @@
 
 "use client";
 import React, { useState, useRef, useContext } from "react";
-import FrequencyDisplay from "../FrequencyDisplay";
-import AudioButton from "../AudioFreqButton";
+import GainDisplay from "../GainDisplay";
+import AudioButton from "../AudioGainButton";
 import { GameContext } from "../../context/GameContext";
 import RoundCounter from "../RoundCounter";
 import { getCorrectAnswer, getOptions } from "../../lib/helperFuncs";
@@ -12,7 +12,7 @@ import { audioFiles } from "../../lib/gameData";
 import EngageEqButton from "../EngageFXButton";
 import AudioFilesList from "../AudioFilesList";
 
-const EqQuiz = () => {
+const GainQuiz = () => {
 	const { gameState, markCorrect, incrementAttempts } = useContext(GameContext);
 	const [isPlaying, setIsPlaying] = useState(false);
 	const [isEqEngaged, setIsEqEngaged] = useState(true);
@@ -56,21 +56,22 @@ const EqQuiz = () => {
 				<RoundCounter round={gameState.round} />
 			</div>
 			<div className="h-fit overflow-scroll">
-				<FrequencyDisplay
+				<GainDisplay
 					quizMode={true}
 					isPlaying={isPlaying}
 					setIsPlaying={setIsPlaying}
 					clickHandler={handleAnswerClick}
 					activeFrequency={freqRef.current}
-					frequencies={optionsRef.current}
+					gainOptions={optionsRef.current}
 				/>
 			</div>
+			``
 			<AudioButton
 				isEqEngaged={isEqEngaged}
 				audioURL={audioURL}
 				isPlaying={isPlaying}
 				setIsPlaying={setIsPlaying}
-				frequency={freqRef.current}
+				gainValue={freqRef.current}
 			/>
 			<button
 				onMouseDown={() => setIsGameStarted(false)}
@@ -82,4 +83,4 @@ const EqQuiz = () => {
 	);
 };
 
-export default EqQuiz;
+export default GainQuiz;

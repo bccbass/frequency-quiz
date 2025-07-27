@@ -5,15 +5,14 @@ import { FaRegPlayCircle } from "react-icons/fa";
 import { FaRegCircleStop } from "react-icons/fa6";
 import * as Tone from "tone";
 
-const AudioButton = ({
-	isEqEngaged=true,
-	frequency,
-	isPlaying,
-	setIsPlaying,
-	audioURL = "./electric_bass.mp3",
+const AudioGainButton = ({
+    isGainEngaged=true,
+    gainValue = 0,
+    isPlaying,
+    setIsPlaying,
+    audioURL = "./electric_bass.mp3",
 }) => {
 	const playerRef = useRef(null);
-	const filterRef = useRef(null);
 	const gainRef = useRef(null);
 
 	// Initialize audio chain once - removed the isInitializedRef flag
@@ -28,26 +27,16 @@ const AudioButton = ({
 		player.volume.value = -Infinity; // Start muted
 
 		// Create a peaking filter (bell curve) to boost specific frequencies
-		const filter = new Tone.Filter({
-			type: "peaking", // Bell-shaped boost/cut
-			frequency: frequency || 1000, // Initial frequency
-			gain: 10, // +10dB boost
-			Q: 4.5, // Narrow band (higher Q = narrower)
-		});
 
 		// Optional: Add a gain node for overall volume control
 		const gain = new Tone.Gain(1);
 
 		// Connect the chain: Player → Filter → Gain → Destination
-		player.connect(filter);
-		filter.connect(gain);
+		player.connect(gain);
 		gain.toDestination();
 
 		playerRef.current = player;
-		filterRef.current = filter;
 		gainRef.current = gain;
-
-		console.log(`Audio chain initialized with ${frequency}Hz boost`);
 
 		// Cleanup on unmount
 		return () => {
@@ -60,12 +49,10 @@ const AudioButton = ({
 
 			// Dispose of all resources
 			player.dispose();
-			filter.dispose();
 			gain.dispose();
 
 			// Clear refs
 			playerRef.current = null;
-			filterRef.current = null;
 			gainRef.current = null;
 		};
 	}, []); // Empty dependency array - reinitialize on every mount
@@ -113,28 +100,30 @@ const AudioButton = ({
 		handleAudio();
 	}, [isPlaying]);
 
-	// Handle frequency changes - update the filter frequency in real-time
+	
+	// Handle gain changes - COMBINED into one effect to prevent conflicts
 	useEffect(() => {
-		if (filterRef.current && frequency) {
-			// Smoothly transition to new frequency
-			filterRef.current.frequency.rampTo(frequency, 0.1);
-			console.log(`Filter frequency changed to ${frequency}Hz`);
-		}
-	}, [frequency]);
+		if (gainRef.current) {
+			let targetGain;
 
-	useEffect(() => {
-		if (playerRef.current && filterRef.current) {
-			// Update filter gain if isEqEngaged changes
-			if (isEqEngaged) {
-				filterRef.current.frequency.rampTo(frequency, 0.02);
-				console.log(`Filter frequency set to ${frequency}Hz`);
+			if (isGainEngaged) {
+				// Convert dB to linear gain if needed, or use dB directly
+				// Tone.js gain nodes work in linear values by default
+				// For dB: use Tone.dbToGain(gainValue)
+				targetGain = Tone.dbToGain(gainValue);
+				console.log(
+					`Gain engaged: setting to ${gainValue}dB (${targetGain} linear)`
+				);
 			} else {
-				// If EQ is disengaged, set gain to a neutral value
-				filterRef.current.frequency.rampTo(10, 0.02); // Mute the filter
-				console.log("EQ disengaged, filter frequency set to 1000Hz");
+				// When disengaged, set to unity gain (0dB = 1.0 linear)
+				targetGain = 1.0; // Unity gain
+				console.log("Gain disengaged: setting to unity gain");
 			}
+
+			// Set the gain to the absolute target value
+			gainRef.current.gain.rampTo(targetGain, 0.02);
 		}
-	}, [isEqEngaged]);
+	}, [isGainEngaged, gainValue]); // Combined dependencies
 
 	const handleClick = () => {
 		setIsPlaying(!isPlaying);
@@ -156,9 +145,9 @@ const AudioButton = ({
 			</button>
 
 			{/* Debug info - remove in production */}
-			{/* <div className="text-xs text-gray-500">Freq: {frequency}Hz</div> */}
+			{/* <div className="text-xs text-gray-500">: {gainValue}</div> */}
 		</div>
 	);
 };
 
-export default AudioButton;
+export default AudioGainButton;

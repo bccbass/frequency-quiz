@@ -4,9 +4,9 @@ import Image from "next/image";
 
 const Logo = () => {
   return (
-		<a href='/' className="flex flex-col items-center justify-center w-fit mb-6 m-4">
+		<a href='' className="flex flex-col items-center justify-center w-fit mb-6 m-4">
 	
-			<Image
+			<img
 				// URL={"freqquiz_logo_smaller.png"}
 				alt="FREQquiz Logo"
 				src={"/freqquiz_logo_smaller.png"}

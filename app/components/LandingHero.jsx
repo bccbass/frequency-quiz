@@ -1,6 +1,8 @@
 /** @format */
 
 'use client';
+import GameSection from "../components/GameSection";
+
 const LandingHero = () => {
     const scrollToSections = () => {
 			document.getElementById("game-section").scrollIntoView({
@@ -99,7 +101,7 @@ const LandingHero = () => {
 					</p>
 
 					<div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-						<button onClick={scrollToSections} className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 transform hover:scale-105 shadow-lg">
+						<button onClick={scrollToSections} className="bg-accent hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 transform hover:scale-105 shadow-lg">
 							Start Practicing
 						</button>
 
@@ -108,8 +110,9 @@ const LandingHero = () => {
 					<p className="text-sm text-gray-500 mt-6">
 						Works best with headphones or studio monitors
 					</p>
-				</div>
 
+				</div>
+<GameSection />
 				{/* Scroll Indicator */}
 				{/* <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
 					<svg
