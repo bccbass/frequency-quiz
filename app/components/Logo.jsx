@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const Logo = () => {
   return (
-		<div className="flex flex-col items-center justify-center w-fit mb-6 m-4">
+		<a href='/' className="flex flex-col items-center justify-center w-fit mb-6 m-4">
 	
 			<Image
 				// URL={"freqquiz_logo_smaller.png"}
@@ -16,7 +16,7 @@ const Logo = () => {
 			<h1 className="text-3xl md:text-5xl -mt-4 font-extralight text-start">
 				<strong className="font-extrabold">FREQ</strong>uiz
 			</h1>
-		</div>
+		</a>
 	);
 }
 

@@ -5,11 +5,11 @@ import { BiEqualizer } from "react-icons/bi";
 
 const EngageEqButton = ({ isEqEngaged, setIsEqEngaged }) => {
 	return (
-		<div className="group relative w-full mb-4">
+		<div className="group relative w-full ">
             <p className="group-hover:opacity-100 opacity-0 transition duration-500 absolute -bottom-2 text-sm bg-white rounded-sm outline-gray-200 text-gray-700 px-2 z-50">Toggle EQ</p>
 			<button
 				onClick={() => setIsEqEngaged(!isEqEngaged)}
-				className={`w-full my-2 text-6xl ${
+				className={`pl-2 w-full my-2 text-6xl ${
 					isEqEngaged ? "text-red-400" : "text-gray-400"
 				} `}
 			>

@@ -48,7 +48,7 @@ const EqQuiz = () => {
 			id="game"
 			className="flex flex-col h-[60vh] md:h-[80vh] items-center overflow-hidden w-md"
 		>
-			<div className="flex justify-between w-full items-center my-2">
+			<div className="flex justify-between w-full items-center mt-2 mb-4">
 				<EngageEqButton
 					isEqEngaged={isEqEngaged}
 					setIsEqEngaged={handleIsEqEngaged}

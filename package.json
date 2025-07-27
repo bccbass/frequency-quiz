@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "hamburger-react": "^2.5.2",
     "motion": "^12.23.6",
     "next": "15.4.1",
     "react": "19.1.0",
@@ -19,6 +20,8 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
+    "@types/node": "24.1.0",
+    "@types/react": "19.1.8",
     "eslint": "^9",
     "eslint-config-next": "15.4.1",
     "tailwindcss": "^4"

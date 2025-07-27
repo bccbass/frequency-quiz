@@ -39,7 +39,7 @@ const EqPractice = ({}) => {
 				isEqEngaged={isEqEngaged}
 				setIsEqEngaged={setIsEqEngaged}
 			/>
-			<div className="h-fit overflow-scroll">
+			<div className="h-fit overflow-scroll mt-4">
 				<FrequencyDisplay
 					isPlaying={isPlaying}
 					setIsPlaying={setIsPlaying}
