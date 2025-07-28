@@ -31,7 +31,7 @@ const AudioFreqButton = ({
 		const filter = new Tone.Filter({
 			type: "peaking", // Bell-shaped boost/cut
 			frequency: frequency || 1000, // Initial frequency
-			gain: 10, // +10dB boost
+			gain: 10.5, // +10dB boost
 			Q: 4.5, // Narrow band (higher Q = narrower)
 		});
 
@@ -114,27 +114,31 @@ const AudioFreqButton = ({
 	}, [isPlaying]);
 
 	// Handle frequency changes - update the filter frequency in real-time
-	useEffect(() => {
-		if (filterRef.current && frequency) {
-			// Smoothly transition to new frequency
-			filterRef.current.frequency.rampTo(frequency, 0.1);
-			console.log(`Filter frequency changed to ${frequency}Hz`);
-		}
-	}, [frequency]);
+useEffect(() => {
+	if (filterRef.current) {
+		// Set frequency
+		filterRef.current.frequency.rampTo(frequency, 0.1);
 
-	useEffect(() => {
-		if (playerRef.current && filterRef.current) {
-			// Update filter gain if isEqEngaged changes
-			if (isEqEngaged) {
-				filterRef.current.frequency.rampTo(frequency, 0.02);
-				console.log(`Filter frequency set to ${frequency}Hz`);
-			} else {
-				// If EQ is disengaged, set gain to a neutral value
-				filterRef.current.frequency.rampTo(10, 0.02); // Mute the filter
-				console.log("EQ disengaged, filter frequency set to 1000Hz");
-			}
-		}
-	}, [isEqEngaged]);
+		// Set gain based on engagement
+		// For various levels of difficulty make 12 a variable state and adjust the gain accordingly
+		const targetGain = isEqEngaged ? 10.5 : 0;
+		filterRef.current.gain.rampTo(targetGain, 0.02);
+	}
+}, [frequency, isEqEngaged]);
+
+	// useEffect(() => {
+	// 	if (playerRef.current && filterRef.current) {
+	// 		// Update filter gain if isEqEngaged changes
+	// 		if (isEqEngaged) {
+	// 			filterRef.current.frequency.rampTo(frequency, 0.02);
+	// 			console.log(`Filter frequency set to ${frequency}Hz`);
+	// 		} else {
+	// 			// If EQ is disengaged, set gain to a neutral value
+	// 			filterRef.current.frequency.rampTo(10, 0.02); // Mute the filter
+	// 			console.log("EQ disengaged, filter frequency set to 1000Hz");
+	// 		}
+	// 	}
+	// }, [isEqEngaged]);
 
 	const handleClick = () => {
 		setIsPlaying(!isPlaying);

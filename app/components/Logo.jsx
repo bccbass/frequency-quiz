@@ -1,10 +1,9 @@
 import React from 'react'
-import Image from "next/image";
 
 
 const Logo = () => {
   return (
-		<a href='' className="flex flex-col items-center justify-center w-fit mb-6 m-4">
+		<a href='/' className="flex flex-col items-center justify-center w-fit mb-6 m-4">
 	
 			<img
 				// URL={"freqquiz_logo_smaller.png"}

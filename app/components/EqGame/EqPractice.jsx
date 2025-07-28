@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import FrequencyDisplay from "../FrequencyDisplay";
 import AudioButton from "../AudioFreqButton";
 import { audioFiles } from "../../lib/gameData";
-import EngageEqButton from "../EngageFXButton";
+import EngageFXButton from "../EngageFXButton";
 import AudioFilesList from "../AudioFilesList";
 import { frequencies } from "../../lib/gameData";
 
@@ -32,9 +32,9 @@ const EqPractice = ({}) => {
 			id="game"
 			className="flex flex-col h-[60vh] md:h-[80vh] items-center overflow-hidden py-2"
 		>
-			<EngageEqButton
-				isEqEngaged={isEqEngaged}
-				setIsEqEngaged={setIsEqEngaged}
+			<EngageFXButton
+				isFXEngaged={isEqEngaged}
+				setIsFXEngaged={setIsEqEngaged}
 			/>
 			<div className="h-fit overflow-scroll mt-4">
 				<FrequencyDisplay

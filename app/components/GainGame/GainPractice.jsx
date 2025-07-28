@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import GainDisplay from "../GainDisplay";
 import AudioButton from "../AudioGainButton";
 import { audioFiles } from "../../lib/gameData";
-import EngageEqButton from "../EngageFXButton";
+import EngageFXButton from "../EngageFXButton";
 import AudioFilesList from "../AudioFilesList";
 import { gainOptions } from "../../lib/gameData";
 
@@ -30,7 +30,8 @@ const GainPractice = ({}) => {
 			id="game"
 			className="flex flex-col h-[60vh] md:h-[80vh] items-center overflow-hidden py-2"
 		>
-			<EngageEqButton
+			<EngageFXButton
+				title="gain"
 				isFXEngaged={isGainEngaged}
 				setIsFXEngaged={setIsGainEngaged}
 			/>

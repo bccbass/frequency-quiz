@@ -7,35 +7,36 @@ import AudioButton from "../AudioGainButton";
 import { GameContext } from "../../context/GameContext";
 import RoundCounter from "../RoundCounter";
 import { getCorrectAnswer, getOptions } from "../../lib/helperFuncs";
-import { frequencies } from "../../lib/gameData";
+import { gainOptions } from "../../lib/gameData";
 import { audioFiles } from "../../lib/gameData";
-import EngageEqButton from "../EngageFXButton";
+import EngageFXButton from "../EngageFXButton";
 import AudioFilesList from "../AudioFilesList";
 
 const GainQuiz = () => {
 	const { gameState, markCorrect, incrementAttempts } = useContext(GameContext);
 	const [isPlaying, setIsPlaying] = useState(false);
-	const [isEqEngaged, setIsEqEngaged] = useState(true);
+	const [isGainEngaged, setIsGainEngaged] = useState(true);
 	const [audioURL, setAudioURL] = useState(null);
 	const [isGameStarted, setIsGameStarted] = useState(false);
-	const frequency = getCorrectAnswer(frequencies);
-	const freqRef = useRef(frequency);
-	const frequencyGameOptions = getOptions(frequencies, freqRef.current);
-	const optionsRef = useRef(frequencyGameOptions);
+	const correctGainVal = getCorrectAnswer(gainOptions);
+	const correctGainRef = useRef(correctGainVal);
+	const gainGameOptions = getOptions(gainOptions, correctGainRef.current);
+	const optionsRef = useRef(gainGameOptions);
 
-	const handleAnswerClick = (input, freq) => {
-		if (input == freq) {
+	const handleAnswerClick = (input, gain) => {
+		if (input == gain) {
 			markCorrect();
-			freqRef.current = getCorrectAnswer(frequencies, freqRef.current);
-			optionsRef.current = getOptions(frequencies, freqRef.current);
+			correctGainRef.current = getCorrectAnswer(
+				gainOptions,
+				correctGainRef.current
+			);
+			optionsRef.current = getOptions(gainOptions, correctGainRef.current);
 		} else {
 			incrementAttempts();
 		}
 	};
 
-	const handleIsEqEngaged = () => {
-		setIsEqEngaged(!isEqEngaged);
-	};
+
 
 	return !isGameStarted ? (
 		<AudioFilesList
@@ -49,10 +50,12 @@ const GainQuiz = () => {
 			className="flex flex-col h-[60vh] md:h-[80vh] items-center overflow-hidden w-md"
 		>
 			<div className="flex justify-between w-full items-center mt-2 mb-4">
-				<EngageEqButton
-					isEqEngaged={isEqEngaged}
-					setIsEqEngaged={handleIsEqEngaged}
+				<EngageFXButton
+					title="gain"
+					isFXEngaged={isGainEngaged}
+					setIsFXEngaged={setIsGainEngaged}
 				/>
+
 				<RoundCounter round={gameState.round} />
 			</div>
 			<div className="h-fit overflow-scroll">
@@ -61,17 +64,17 @@ const GainQuiz = () => {
 					isPlaying={isPlaying}
 					setIsPlaying={setIsPlaying}
 					clickHandler={handleAnswerClick}
-					activeFrequency={freqRef.current}
+					activeGainVal={correctGainRef.current}
 					gainOptions={optionsRef.current}
 				/>
 			</div>
-			``
+
 			<AudioButton
-				isEqEngaged={isEqEngaged}
+				isGainEngaged={isGainEngaged}
 				audioURL={audioURL}
 				isPlaying={isPlaying}
 				setIsPlaying={setIsPlaying}
-				gainValue={freqRef.current}
+				gainValue={correctGainRef.current}
 			/>
 			<button
 				onMouseDown={() => setIsGameStarted(false)}

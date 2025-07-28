@@ -9,7 +9,7 @@ import RoundCounter from "../RoundCounter";
 import { getCorrectAnswer, getOptions } from "../../lib/helperFuncs";
 import { frequencies } from "../../lib/gameData";
 import { audioFiles } from "../../lib/gameData";
-import EngageEqButton from "../EngageFXButton";
+import EngageFXButton from "../EngageFXButton";
 import AudioFilesList from "../AudioFilesList";
 
 const EqQuiz = () => {
@@ -49,9 +49,9 @@ const EqQuiz = () => {
 			className="flex flex-col h-[60vh] md:h-[80vh] items-center overflow-hidden w-md"
 		>
 			<div className="flex justify-between w-full items-center mt-2 mb-4">
-				<EngageEqButton
-					isEqEngaged={isEqEngaged}
-					setIsEqEngaged={handleIsEqEngaged}
+				<EngageFXButton
+					isFXEngaged={isEqEngaged}
+					setIsFXEngaged={setIsEqEngaged}
 				/>
 				<RoundCounter round={gameState.round} />
 			</div>
