@@ -3,7 +3,7 @@
 "use client";
 import React, { useContext } from "react";
 import FreqButton from "./FreqButton";
-import { GameContext } from "../context/GameContext";
+import FadeInLi from "./FadeInLi";
 
 const FrequencyDisplay = ({
 	clickHandler,
@@ -16,14 +16,17 @@ const FrequencyDisplay = ({
 	return (
 		<div className="flex flex-col justify-center space-y-4 h-fit  p-1">
 			{frequencies.map((freq, index) => (
-				<FreqButton
-					clickHandler={clickHandler}
-					quizMode={quizMode}
-					key={index}
-					isPlaying={isPlaying}
-					freq={freq}
-					activeFrequency={activeFrequency}
-				/>
+				<FadeInLi index={index} key={index}>
+					{/* Using FadeInLi to wrap FreqButton for fade-in effect */}
+					<FreqButton
+						clickHandler={clickHandler}
+						quizMode={quizMode}
+						key={index}
+						isPlaying={isPlaying}
+						freq={freq}
+						activeFrequency={activeFrequency}
+					/>
+				</FadeInLi>
 			))}
 		</div>
 	);

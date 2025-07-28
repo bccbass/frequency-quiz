@@ -101,7 +101,7 @@ const LandingHero = () => {
 					</p>
 
 					<div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-						<button onClick={scrollToSections} className="bg-accent hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 transform hover:scale-105 shadow-lg">
+						<button onClick={scrollToSections} className="bg-blue-500 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 transform hover:scale-105 shadow-lg">
 							Start Practicing
 						</button>
 

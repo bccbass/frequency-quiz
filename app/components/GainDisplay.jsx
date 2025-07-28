@@ -1,8 +1,10 @@
 /** @format */
 
 "use client";
-import React, { useContext } from "react";
+import React from "react";
 import GainButton from "./GainButton";
+import FadeInLi from "./FadeInLi";
+
 
 const GainDisplay = ({
 	clickHandler,
@@ -14,6 +16,8 @@ const GainDisplay = ({
 	return (
 		<div className="flex flex-col justify-center space-y-4 h-fit  p-1">
 			{gainOptions.map((gainValue, index) => (
+				<FadeInLi index={index} key={index}>
+					{/* Using FadeInLi to wrap GainButton for fade-in effect */}	
 				<GainButton
 					clickHandler={clickHandler}
 					quizMode={quizMode}
@@ -22,6 +26,7 @@ const GainDisplay = ({
 					gainValue={gainValue}
 					activeGainVal={activeGainVal}
 				/>
+				</FadeInLi>
 			))}
 		</div>
 	);

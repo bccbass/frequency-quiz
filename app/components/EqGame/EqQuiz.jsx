@@ -11,6 +11,8 @@ import { frequencies } from "../../lib/gameData";
 import { audioFiles } from "../../lib/gameData";
 import EngageFXButton from "../EngageFXButton";
 import AudioFilesList from "../AudioFilesList";
+import { GiExitDoor } from "react-icons/gi";
+
 
 const EqQuiz = () => {
 	const { gameState, markCorrect, incrementAttempts } = useContext(GameContext);
@@ -76,7 +78,8 @@ const EqQuiz = () => {
 				onMouseDown={() => setIsGameStarted(false)}
 				className="text-neutral-200 hover:underline transition duration-300 hover:underline-offset-8 text-xl"
 			>
-				Exit
+								<GiExitDoor className="inline-block mr-2 text-4xl" /> Exit
+				
 			</button>
 		</div>
 	);

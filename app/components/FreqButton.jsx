@@ -27,7 +27,6 @@ const FreqButton = ({
 	}, [isCorrect]);
 
 	return (
-	
 		<motion.div
 
 			disabled={!isPlaying}
