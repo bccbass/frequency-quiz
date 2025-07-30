@@ -8,6 +8,7 @@ import { audioFiles } from "../../lib/gameData";
 import EngageFXButton from "../EngageFXButton";
 import AudioFilesList from "../AudioFilesList";
 import { gainOptions } from "../../lib/gameData";
+import { GiExitDoor } from "react-icons/gi";
 
 const GainPractice = ({}) => {
 	const [isGameStarted, setIsGameStarted] = useState(false);
@@ -51,11 +52,15 @@ const GainPractice = ({}) => {
 				setIsPlaying={setIsPlaying}
 				gainValue={gain}
 			/>
-			<button
+		<button
 				onMouseDown={() => setIsGameStarted(false)}
-				className="text-neutral-200 hover:underline transition duration-300 hover:underline-offset-8 text-xl"
+				className="text-neutral-200 group transition duration-300 ease-in-out text-xl"
 			>
-				Exit
+				<GiExitDoor className=" text-4xl mt-12 group-hover:text-accent transition duration-300 ease-in-out" />{" "}
+				<span className="text-sm uppercase group-hover:text-accent transition duration-300 ease-in-out">
+					{" "}
+					Exit
+				</span>
 			</button>
 		</div>
 	);

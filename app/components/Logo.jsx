@@ -1,10 +1,13 @@
-import React from 'react'
+/** @format */
 
+import React from "react";
 
-const Logo = () => {
-  return (
-		<a href='/' className="flex flex-col items-center justify-center w-fit mb-6 m-4">
-	
+const Logo = ({ darkTheme = false }) => {
+	return (
+		<a
+			href="/"
+			className="flex flex-col items-center justify-center w-fit mb-6 m-4"
+		>
 			<img
 				// URL={"freqquiz_logo_smaller.png"}
 				alt="FREQquiz Logo"
@@ -12,11 +15,15 @@ const Logo = () => {
 				width={200}
 				height={100}
 			/>
-			<h1 className="text-3xl md:text-5xl -mt-4 font-extralight text-start">
+			<h1
+				className={` -mt-4 font-extralight text-start ${
+					darkTheme ? "text-gray-800 text-6xl" : "text-3xl md:text-5xl"
+				}`}
+			>
 				<strong className="font-extrabold">FREQ</strong>uiz
 			</h1>
 		</a>
 	);
-}
+};
 
-export default Logo
+export default Logo;

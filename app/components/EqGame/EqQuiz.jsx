@@ -76,10 +76,13 @@ const EqQuiz = () => {
 			/>
 			<button
 				onMouseDown={() => setIsGameStarted(false)}
-				className="text-neutral-200 hover:underline transition duration-300 hover:underline-offset-8 text-xl"
+				className="text-neutral-200 group transition duration-300 ease-in-out text-xl"
 			>
-								<GiExitDoor className="inline-block mr-2 text-4xl" /> Exit
-				
+				<GiExitDoor className=" text-4xl mt-12 group-hover:text-accent transition duration-300 ease-in-out" />{" "}
+				<span className="text-sm uppercase group-hover:text-accent transition duration-300 ease-in-out">
+					{" "}
+					Exit
+				</span>
 			</button>
 		</div>
 	);

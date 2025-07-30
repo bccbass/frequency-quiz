@@ -39,16 +39,14 @@ const LandingMenuItems = ({
 					className={classStyle}
 					href={item.href}
 				>
-					<CiWavePulse1 className="inline-block mr-3 pb-1 transition-opacity duration-300 ease-in-out opacity-0 group-hover:opacity-100" />
 					{item.title}
-					<CiWavePulse1 className="inline-block ml-3 pb-1 transition-opacity duration-300 ease-in-out opacity-0 group-hover:opacity-100" />
 				</Link>
 			))}
 			<Link
 				role="link"
 				aria-label={aboutObj.title}
 				className={
-					"text-2xl mx-auto mt-16 text-accent underline block font-semibold  hover:text-orange-500 transition-all duration-300 ease-in-out"
+					"text-2xl mx-auto mt-16 text-background underline block font-semibold  hover:opacity-80 transition-all duration-300 ease-in-out"
 				}
 				href={aboutObj.href}
 			>

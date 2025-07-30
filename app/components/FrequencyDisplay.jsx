@@ -14,7 +14,7 @@ const FrequencyDisplay = ({
 }) => {
 
 	return (
-		<div className="flex flex-col justify-center space-y-4 h-fit  p-1">
+		<div className="flex flex-col justify-center space-y-4 h-fit  p-1 w-fit mx-12">
 			{frequencies.map((freq, index) => (
 				<FadeInLi index={index} key={index}>
 					{/* Using FadeInLi to wrap FreqButton for fade-in effect */}
