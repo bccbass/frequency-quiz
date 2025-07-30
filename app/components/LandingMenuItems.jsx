@@ -39,7 +39,8 @@ const LandingMenuItems = ({
 					className={classStyle}
 					href={item.href}
 				>
-					{item.title}
+					<p>{item.title}</p>
+					<p className="text-sm mt-2">{item.description}</p>
 				</Link>
 			))}
 			<Link
