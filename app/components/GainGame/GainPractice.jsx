@@ -29,7 +29,7 @@ const GainPractice = ({}) => {
 	) : (
 		<div
 			id="game"
-			className="flex flex-col h-[60vh] md:h-[80vh] items-center overflow-hidden py-2"
+			className="flex flex-col h-screen md:h-[80vh] items-center overflow-hidden py-2 w-78 md:w-md"
 		>
 			<EngageFXButton
 				title="gain"
@@ -52,7 +52,7 @@ const GainPractice = ({}) => {
 				setIsPlaying={setIsPlaying}
 				gainValue={gain}
 			/>
-		<button
+			<button
 				onMouseDown={() => setIsGameStarted(false)}
 				className="text-neutral-200 group transition duration-300 ease-in-out text-xl"
 			>

@@ -14,18 +14,18 @@ const GainDisplay = ({
 	isPlaying,
 }) => {
 	return (
-		<div className="flex flex-col justify-center space-y-4 h-fit  p-1">
+		<div className="flex flex-col justify-center space-y-4 h-fit  p-1 w-fit mx-12">
 			{gainOptions.map((gainValue, index) => (
 				<FadeInLi index={index} key={index}>
-					{/* Using FadeInLi to wrap GainButton for fade-in effect */}	
-				<GainButton
-					clickHandler={clickHandler}
-					quizMode={quizMode}
-					key={index}
-					isPlaying={isPlaying}
-					gainValue={gainValue}
-					activeGainVal={activeGainVal}
-				/>
+					{/* Using FadeInLi to wrap GainButton for fade-in effect */}
+					<GainButton
+						clickHandler={clickHandler}
+						quizMode={quizMode}
+						key={index}
+						isPlaying={isPlaying}
+						gainValue={gainValue}
+						activeGainVal={activeGainVal}
+					/>
 				</FadeInLi>
 			))}
 		</div>

@@ -21,11 +21,11 @@ const FrequenciesSection = () => {
 	const [practiceMode, setPracticeMode] = useState(true);
 	return (
 		<div>
-			<h1 className="text-4xl md:text-5xl font-bold mb-8 text-accent rounded-sm w-fit mx-auto px-4 py-2 uppercase">
+			<h1 className="text-4xl md:text-5xl font-bold mb-8 mt-12 md:mt-2 text-accent rounded-sm w-fit mx-auto px-4 py-2 uppercase">
 				Frequency <FaWaveSquare className="inline pb-2" />
 			</h1>
 			<div className="">
-				<div className="text-2xl w-md font-bold mb-4 outline rounded-sm  mx-auto">
+				<div className="md:text-2xl text-md w-78 md:w-md font-bold mb-8 outline rounded-sm  mx-auto">
 					<a
 						href="#game"
 						onMouseDown={() => setPracticeMode(true)}

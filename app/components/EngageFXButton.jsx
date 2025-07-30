@@ -11,7 +11,7 @@ const EngageFXButton = ({ isFXEngaged, setIsFXEngaged, title = "EQ" }) => {
 			</p>
 			<button
 				onClick={() => setIsFXEngaged(!isFXEngaged)}
-				className={`pl-2 w-full my-2 text-6xl ${
+				className={`pl-2 w-full my-2 text-5xl md:text-6xl ${
 					isFXEngaged ? "text-red-400" : "text-gray-400"
 				} `}
 			>

@@ -12,8 +12,8 @@ const LandingHero = () => {
 	};
 
 	return (
-		<div className="w-full px-2 my-12">
-			<div className="bg-gradient-to-br w-fit from-blue-50 max-w-6xl py-8 mx-auto rounded-lg to-indigo-100 min-h-screen flex items-center justify-center px-6 md:px-10">
+		<div className="w-full md:px-2 md:my-12">
+			<div className="bg-gradient-to-br from-blue-50 max-w-6xl py-8 mx-auto rounded-lg to-indigo-100 min-h-screen flex items-center justify-center px-6 md:px-10">
 				<div className="max-w-4xl mx-auto text-center">
 					{/* Main Hero Section */}
 					<div className="mx-auto w-fit mb-20">

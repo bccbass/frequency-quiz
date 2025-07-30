@@ -48,7 +48,7 @@ const EqQuiz = () => {
 	) : (
 		<div
 			id="game"
-			className="flex flex-col h-[60vh] md:h-[80vh] items-center overflow-hidden w-md"
+			className="flex pt-10 md:pt-0 flex-col h-screen w-80 md:h-[80vh] items-center overflow-hidden md:w-md"
 		>
 			<div className="flex justify-between w-full items-center mt-2 mb-4">
 				<EngageFXButton

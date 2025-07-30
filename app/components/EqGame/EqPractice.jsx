@@ -32,7 +32,7 @@ const EqPractice = ({}) => {
 	) : (
 		<div
 			id="game"
-			className="flex flex-col h-[60vh] md:h-[80vh] items-center overflow-hidden py-2"
+			className="flex w-80  pt-8 md:pt-0 flex-col h-screen md:h-[80vh] items-center overflow-hidden py-2 md:w-md"
 		>
 			<EngageFXButton
 				isFXEngaged={isEqEngaged}

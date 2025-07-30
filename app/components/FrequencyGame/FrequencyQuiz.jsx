@@ -34,14 +34,14 @@ const FrequencyQuiz = () => {
 				setIsGameStarted(true);
 				setIsPlaying(true);
 			}}
-			className="rounded-sm py-4 w-72 bg-pink-700 text-2xl font-semibold hover:bg-pink-600 transition outline mt-12 uppercase"
+			className="rounded-sm px-4 py-2 text-2xl md:py-4 md:w-72 bg-pink-700 md:text-2xl font-semibold hover:bg-pink-600 transition outline mt-12 uppercase"
 		>
 			Let's Go!
 		</button>
 	) : (
 		<div
 			id="game"
-			className="flex flex-col h-[60vh] md:h-[80vh] items-center overflow-hidden py-2 w-md"
+			className="flex w-80 flex-col h-[60vh] md:h-[80vh] items-center overflow-hidden py-2 md:w-md "
 		>
 			<RoundCounter round={gameState.round} />
 			<div className="h-fit overflow-scroll">

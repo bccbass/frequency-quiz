@@ -48,7 +48,7 @@ const GainQuiz = () => {
 	) : (
 		<div
 			id="game"
-			className="flex flex-col h-[60vh] md:h-[80vh] items-center overflow-hidden w-md"
+			className="flex flex-col h-screen md:h-[80vh] items-center overflow-hidden w-78 md:w-md"
 		>
 			<div className="flex justify-between w-full items-center mt-2 mb-4">
 				<EngageFXButton

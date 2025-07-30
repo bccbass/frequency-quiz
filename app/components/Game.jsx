@@ -17,7 +17,7 @@ const Game = ({ children }) => {
 					<p className="my-4">You received {gameState.score} points!</p>
 					<button
 						onClick={resetGame}
-						className="rounded-sm py-4 w-72 bg-pink-700 hover:bg-pink-600 transition outline mt-4"
+						className="rounded-sm md:py-4 py-2 px-4 md:px-0 md:w-72 bg-pink-700 hover:bg-pink-600 transition outline mt-4"
 					>
 						Play Again
 					</button>

@@ -25,7 +25,8 @@ const EqSection = () => {
 				EQ <BiEqualizer className="inline pb-2" />
 			</h1>
 			<div className="">
-				<div className="text-2xl w-md font-bold mb-4 outline rounded-sm  mx-auto">
+				<div className="md:text-2xl text-md w-78 md:w-md font-bold md:mb-4 outline rounded-sm  mx-auto">
+				
 					<button
 						// href="#game"
 						onMouseDown={() => setPracticeMode(true)}
