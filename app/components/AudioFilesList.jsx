@@ -12,7 +12,7 @@ const AudioFilesList = ({ audioFiles, setIsGameStarted, setAudioURL }) => {
 						setAudioURL(audioFile.url);
 						// setIsPlaying(true);
 					}}
-					className=" text-neutral-200 my-2   text-xl font-semibold hover:border-neutral-50 border-b-3 border-background transition hover:text-neutral-50  uppercase"
+					className=" text-neutral-200 my-2 text-xl font-semibold hover:border-neutral-50 border-b-3 border-background transition hover:text-neutral-50  uppercase"
 				>
 					{audioFile.title}
 				</button>

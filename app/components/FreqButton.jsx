@@ -25,6 +25,7 @@ const FreqButton = ({
 		incorrect: {
 			x: [-16, 16, -12, 12, -8, 8, 0],
 			transition: { duration: 0.6 },
+			// backgroundColor: "var(--color-red-600",
 		},
 		correct: {
 			// opacity: [0.5, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0],
@@ -43,7 +44,7 @@ const FreqButton = ({
 				"#41ab13",
 			],
 
-			backgroundColor: ["#41ab13"],
+			backgroundColor: ["var(--color-emerald-600)"],
 			transition: { duration: 1.2 },
 		},
 	};
