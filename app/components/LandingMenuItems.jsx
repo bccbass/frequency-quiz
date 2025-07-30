@@ -5,7 +5,7 @@ import React from "react";
 import { Suspense } from "react";
 import Link from "next/link";
 import menuItems from "../lib/menuItems";
-import { CiWavePulse1 } from "react-icons/ci";
+// import { CiWavePulse1 } from "react-icons/ci";
 
 const LandingMenuItems = ({
 	classStyle = "group",
@@ -27,6 +27,7 @@ const LandingMenuItems = ({
 			</h2>
 			{gameItems.map((item, i) => (
 				<Link
+					prefetch={false}
 					role="link"
 					aria-label={item.title}
 					key={i}

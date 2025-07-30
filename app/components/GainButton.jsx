@@ -20,7 +20,7 @@ const GainButton = ({
 			x: 0,
 			scale: 1,
 			backgroundColor: "var(--color-pink-600",
-			color: "white",
+			color: "#FFFFFF",
 		},
 		incorrect: {
 			x: [-16, 16, -12, 12, -8, 8, 0],
