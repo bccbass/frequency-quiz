@@ -16,11 +16,11 @@ const LandingHero = () => {
 			<div className="bg-gradient-to-br from-blue-50 max-w-6xl py-8 mx-auto rounded-lg to-indigo-100 min-h-screen flex items-center justify-center px-6 md:px-10">
 				<div className="max-w-4xl mx-auto text-center">
 					{/* Main Hero Section */}
-					<div className="mx-auto w-fit mb-20">
-						<Logo darkTheme={true} />
+					<div className="mx-auto w-fit ">
+						<Logo feature={true} darkTheme={true} />
 					</div>
 					<div className="mb-12">
-						<h1 className="text-5xl md:text-5xl font-bold text-gray-600 mb-6">
+						<h1 className="text-3xl md:text-4xl font-bold text-gray-600 mb-6">
 							Train Your
 							<span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
 								{" "}
