@@ -1,9 +1,11 @@
 /** @format */
 
 "use client";
-import React, { useState } from "react";
+import React, { useState, lazy, Suspense } from "react";
 import FrequencyDisplay from "../FrequencyDisplay";
-import OscillatorButton from "../OscillatorButton";
+const OscillatorButton = lazy(() => import("../OscillatorButton"));
+// import OscillatorButton from "../OscillatorButton";
+import InitialPlayButton from "../InitialPlayButton";
 
 const frequencies = [
 	100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 2000, 3000, 4000, 8000,
@@ -12,6 +14,7 @@ const frequencies = [
 
 const FrequencyPractice = ({}) => {
 	const [isPlaying, setIsPlaying] = useState(false);
+	const [userInteraction, setUserInteraction] = useState(false);
 	const [frequency, setFrequency] = useState(frequencies[0]); // Default frequency
 	const handleFrequencyChange = (value) => {
 		setFrequency(value);
@@ -31,11 +34,22 @@ const FrequencyPractice = ({}) => {
 					frequencies={frequencies}
 				/>
 			</div>
-			<OscillatorButton
-				isPlaying={isPlaying}
-				setIsPlaying={setIsPlaying}
-				frequency={frequency}
-			/>
+			{userInteraction ? (
+				<Suspense fallback={<div>Loading...</div>}>
+					<OscillatorButton
+						isPlaying={isPlaying}
+						setIsPlaying={setIsPlaying}
+						frequency={frequency}
+					/>
+				</Suspense>
+			) : (
+				<InitialPlayButton
+					handleClick={() => {
+						setIsPlaying(true);
+						setUserInteraction(true);
+					}}
+				/>
+			)}
 		</div>
 	);
 };

@@ -1,9 +1,9 @@
 /** @format */
 
 "use client";
-import React, { useState, useRef, useContext } from "react";
+import React, { useState, useRef, useContext, Suspense, lazy } from "react";
 import FrequencyDisplay from "../FrequencyDisplay";
-import OscillatorButton from "../OscillatorButton";
+const OscillatorButton = lazy(() => import("../OscillatorButton"));
 import { GameContext } from "../../context/GameContext";
 import RoundCounter from "../RoundCounter";
 import { getCorrectAnswer, getOptions } from "../../lib/helperFuncs";
@@ -54,11 +54,14 @@ const FrequencyQuiz = () => {
 					frequencies={optionsRef.current}
 				/>
 			</div>
+							<Suspense fallback={<div>Loading...</div>}>
+			
 			<OscillatorButton
 				isPlaying={isPlaying}
 				setIsPlaying={setIsPlaying}
 				frequency={freqRef.current}
 			/>
+			</Suspense>
 		</div>
 	);
 };
