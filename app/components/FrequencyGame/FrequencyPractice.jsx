@@ -45,7 +45,7 @@ const FrequencyPractice = ({}) => {
 			) : (
 				<InitialPlayButton
 					handleClick={() => {
-						setIsPlaying(true);
+						// setIsPlaying(true);
 						setUserInteraction(true);
 					}}
 				/>
