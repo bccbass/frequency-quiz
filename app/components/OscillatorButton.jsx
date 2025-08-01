@@ -27,10 +27,11 @@ const OscillatorButton = ({ frequency, isPlaying, setIsPlaying }) => {
 	useEffect(() => {
 		const handleAudio = async () => {
 			if (oscillatorRef.current && isPlaying) {
+
 				// Start audio context and oscillator only once
 				if (isPlaying) {
 					// Below throws err due to start times not Matching
-					// await Tone.start()
+					await Tone.start()
 					// This seems to solve err, although not 'awaiting' Tone creation
 					const now = Tone.now();
 					oscillatorRef.current.start(now);
